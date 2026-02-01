@@ -1,0 +1,13 @@
+{
+    "doc_name": "Leave Policy",
+    "question": "3. What is the scope of this policy?",
+    "answer": "This policy applies to all employees of the organization, regardless of role or department.",
+    "chunk_id": "leave_policy_2",
+    "document_metadata": {
+        "filename": "Leave-Policy.pdf",
+        "file_location": "C:\\Mahin\\HR-Bot",
+        "file_type": ".pdf",
+        "file_size_kb": 52.92,
+        "last_modified_date": "2026-01-29 21:29:49"
+    }
+}
