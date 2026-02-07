@@ -1,0 +1,522 @@
+{
+  "0": {
+    "doc_name": "Leave Policy",
+    "question": "1. What is the purpose of the Leave Policy?",
+    "answer": "At BlueOrbit Technologies Pvt. Ltd., we value employee well-being and work\u2013life balance. This policy defines the rules, eligibility, types, and procedures related to employee leave, ensuring transparency while meeting business requirements.",
+    "chunk_id": "leave_policy_0",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "1": {
+    "doc_name": "Leave Policy",
+    "question": "2. Who is eligible for leave?",
+    "answer": "\u2022 All regular and confirmed employees are eligible for leave as per this policy.\n\u2022 Trainees and probationary employees are eligible only for Sick Leave.\n\u2022 Leave entitlements are calculated on a calendar-year basis (1 January \u2013 31 December).",
+    "chunk_id": "leave_policy_1",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "2": {
+    "doc_name": "Leave Policy",
+    "question": "11. What is Leave Without Pay (LWP)?",
+    "answer": "\u2022 Applicable when leave balance is zero or negative\n\u2022 Requires approval from the Reporting Manager and Head of HR\n\u2022 Any LWP exceeding 10 consecutive days requires CEO or Director approval\n\u2022 Holidays falling during LWP are not paid",
+    "chunk_id": "leave_policy_10",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "3": {
+    "doc_name": "Leave Policy",
+    "question": "12. What is Sabbatical Leave?",
+    "answer": "\u2022 Available to employees with a minimum of 5 years of continuous service\n\u2022 Maximum duration is up to 1 year\n\u2022 Purpose includes higher education or job-related skill development\n\u2022 Approval flow: Reporting Manager \u2192 HOD \u2192 Head of HR \u2192 CEO",
+    "chunk_id": "leave_policy_11",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "4": {
+    "doc_name": "Leave Policy",
+    "question": "13. What are the maternity leave benefits?",
+    "answer": "\u2022 Provided as per the Maternity Benefit Act, 1961\n\u2022 Duration of 26 weeks with pay\n\u2022 Applicable to women employees not covered under ESI\n\u2022 Pregnancy-related illness leave may be extended up to 1 additional month and adjusted against leave balance",
+    "chunk_id": "leave_policy_12",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "5": {
+    "doc_name": "Leave Policy",
+    "question": "14. What is the paternity leave policy?",
+    "answer": "\u2022 10 working days of paid leave\n\u2022 Applicable for up to 2 children\n\u2022 Must be availed within 6 months of childbirth or adoption",
+    "chunk_id": "leave_policy_13",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "6": {
+    "doc_name": "Leave Policy",
+    "question": "15. Can employees take leave during probation or notice period?",
+    "answer": "\u2022 Leave during probation or notice period is generally not permitted\n\u2022 Exceptions may be granted only in genuine emergencies with HR approval",
+    "chunk_id": "leave_policy_14",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "7": {
+    "doc_name": "Leave Policy",
+    "question": "16. What is the leave accumulation and encashment policy?",
+    "answer": "\u2022 Maximum leave accumulation allowed is 45 days (Privilege Leave only)\n\u2022 Automatic encashment occurs at the start of the next calendar year\n\u2022 If accumulated leave exceeds 30 days, only the excess from the previous year is encashed",
+    "chunk_id": "leave_policy_15",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "8": {
+    "doc_name": "Leave Policy",
+    "question": "17. How do employees apply for leave?",
+    "answer": "\u2022 Leave must be applied through the HRMS or official leave application system\n\u2022 Applications should be submitted within 30 days, except in emergencies\n\u2022 Leave requests must include the type of leave, start and end dates, and reason",
+    "chunk_id": "leave_policy_16",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "9": {
+    "doc_name": "Leave Policy",
+    "question": "18. How is leave approved?",
+    "answer": "\u2022 The Reporting Manager reviews and approves or rejects the request\n\u2022 The employee is notified once a decision is made\n\u2022 HR records the approved leave",
+    "chunk_id": "leave_policy_17",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "10": {
+    "doc_name": "Leave Policy",
+    "question": "19. What happens if the leave policy is violated?",
+    "answer": "\u2022 Minor violations may result in verbal or written warnings\n\u2022 Serious violations may lead to suspension, demotion, or disciplinary action\n\u2022 Actions are taken by the Reporting Manager in coordination with HR",
+    "chunk_id": "leave_policy_18",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "11": {
+    "doc_name": "Leave Policy",
+    "question": "20. Can management make exceptions to this policy?",
+    "answer": "Yes. Management reserves the right to modify or grant exceptions to this policy to meet statutory or business requirements, subject to approval from the Head of HR.",
+    "chunk_id": "leave_policy_19",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "12": {
+    "doc_name": "Leave Policy",
+    "question": "3. What is the scope of this policy?",
+    "answer": "This policy applies to all employees of the organization, regardless of role or department.",
+    "chunk_id": "leave_policy_2",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "13": {
+    "doc_name": "Leave Policy",
+    "question": "4. What types of leave are available?",
+    "answer": "Employees are entitled to the following types of leave:",
+    "chunk_id": "leave_policy_3",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "14": {
+    "doc_name": "Leave Policy",
+    "question": "5. How is Privilege Leave (PL) calculated?",
+    "answer": "\u2022 18 days per year\n\u2022 Credited at 1.5 days per month\n\u2022 Available only after confirmation or completion of probation\n\u2022 Can be accumulated or encashed as per company policy",
+    "chunk_id": "leave_policy_4",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "15": {
+    "doc_name": "Leave Policy",
+    "question": "6. How does Casual Leave (CL) work?",
+    "answer": "\u2022 12 days per year\n\u2022 Credited at the start of the calendar year or on the date of joining\n\u2022 Can be taken for a minimum of 0.5 day and a maximum of 3 consecutive days\n\u2022 Cannot be carried forward or encashed",
+    "chunk_id": "leave_policy_5",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "16": {
+    "doc_name": "Leave Policy",
+    "question": "7. What are the Sick Leave (SL) rules?",
+    "answer": "\u2022 12 days per year\n\u2022 Minimum leave: 0.5 day\n\u2022 Maximum leave: 5 consecutive days\n\u2022 A doctor\u2019s certificate is mandatory if sick leave exceeds 3 consecutive days\n\u2022 The company may request a medical review if required",
+    "chunk_id": "leave_policy_6",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "17": {
+    "doc_name": "Leave Policy",
+    "question": "8. Are leaves prorated for new joiners?",
+    "answer": "Yes. Employees joining mid-year will receive leave entitlements on a prorated basis, calculated based on the remaining months in the calendar year.",
+    "chunk_id": "leave_policy_7",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "18": {
+    "doc_name": "Leave Policy",
+    "question": "9. How much advance notice is required for leave?",
+    "answer": "\u2022 Planned leave must be applied at least 3 working days in advance\n\u2022 Emergency leave must be informed as soon as possible",
+    "chunk_id": "leave_policy_8",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "19": {
+    "doc_name": "Leave Policy",
+    "question": "10. How many festival and holiday leaves are provided?",
+    "answer": "\u2022 10 paid holidays per year, including national and regional festivals\n\u2022 The holiday list is shared at the start of the calendar year\n\u2022 These holidays cannot be carried forward or encashed",
+    "chunk_id": "leave_policy_9",
+    "document_metadata": {
+      "filename": "Leave-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 52.92,
+      "last_modified_date": "2026-01-29 21:29:49"
+    }
+  },
+  "20": {
+    "doc_name": "Reimbursement Policy",
+    "question": "1. What is the purpose of the Reimbursement Policy?",
+    "answer": "The Reimbursement Policy of BlueOrbit Technologies Pvt. Ltd. defines the rules, eligibility, limits, and procedures for reimbursing employees for official business-related expenses incurred while performing their job duties.",
+    "chunk_id": "reimbursement_policy_20",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "21": {
+    "doc_name": "Reimbursement Policy",
+    "question": "2. Who is eligible for reimbursement?",
+    "answer": "\u2022 All regular and confirmed employees are eligible for reimbursement.\n\u2022 Trainees and probationary employees may claim reimbursements only with prior approval from their Reporting Manager and HR.\n\u2022 Reimbursements are applicable only for expenses incurred for official business purposes.",
+    "chunk_id": "reimbursement_policy_21",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "22": {
+    "doc_name": "Reimbursement Policy",
+    "question": "3. What is the scope of this policy?",
+    "answer": "This policy applies to all eligible employees incurring expenses on behalf of the company while carrying out assigned duties.",
+    "chunk_id": "reimbursement_policy_22",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "23": {
+    "doc_name": "Reimbursement Policy",
+    "question": "4. What types of expenses are reimbursable?",
+    "answer": "Employees may claim reimbursement for the following categories:",
+    "chunk_id": "reimbursement_policy_23",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "24": {
+    "doc_name": "Reimbursement Policy",
+    "question": "5. What expenses are not reimbursable?",
+    "answer": "The following expenses are not eligible for reimbursement: \u2022 Personal expenses\n\u2022 Alcohol, tobacco, or non-business entertainment\n\u2022 Traffic fines or penalties\n\u2022 Expenses without valid bills or receipts\n\u2022 Expenses incurred without prior approval where required",
+    "chunk_id": "reimbursement_policy_24",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "25": {
+    "doc_name": "Reimbursement Policy",
+    "question": "6. What are the general reimbursement guidelines?",
+    "answer": "\u2022 All expenses must be incurred solely for official business\n\u2022 Original bills or digital invoices are mandatory\n\u2022 Expenses must comply with the defined limits\n\u2022 Claims must be accurate and truthful\n\u2022 Any misuse may result in disciplinary action",
+    "chunk_id": "reimbursement_policy_25",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "26": {
+    "doc_name": "Reimbursement Policy",
+    "question": "7. Is prior approval required for reimbursement?",
+    "answer": "\u2022 Prior approval is mandatory for:\n\u2013 Outstation travel\n\u2013 Flight bookings\n\u2013 Accommodation\n\u2013 Training, courses, or certifications\n\u2022 Local conveyance and mobile reimbursements do not require prior approval if within limits",
+    "chunk_id": "reimbursement_policy_26",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "27": {
+    "doc_name": "Reimbursement Policy",
+    "question": "8. What is the reimbursement claim submission timeline?",
+    "answer": "\u2022 Reimbursement claims must be submitted within 30 days from the date of expense\n\u2022 Claims submitted after 30 days may be rejected unless justified and approved by HR",
+    "chunk_id": "reimbursement_policy_27",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "28": {
+    "doc_name": "Reimbursement Policy",
+    "question": "9. How should employees submit reimbursement claims?",
+    "answer": "\u2022 Claims must be submitted through the HRMS or official reimbursement form\n\u2022 Each claim must include:\n\u2013 Expense category\n\u2013 Date of expense\n\u2013 Amount\n\u2013 Purpose of expense\n\u2013 Valid supporting bills or receipts",
+    "chunk_id": "reimbursement_policy_28",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "29": {
+    "doc_name": "Reimbursement Policy",
+    "question": "10. What is the approval process for reimbursement?",
+    "answer": "\u2022 Reporting Manager reviews and approves the claim\n\u2022 Approved claims are forwarded to HR and Finance\n\u2022 Finance processes the reimbursement after verification",
+    "chunk_id": "reimbursement_policy_29",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "30": {
+    "doc_name": "Reimbursement Policy",
+    "question": "11. How long does reimbursement processing take?",
+    "answer": "\u2022 Approved reimbursements are processed within 7\u201310 working days\n\u2022 Reimbursement amount is credited along with salary or via bank transfer",
+    "chunk_id": "reimbursement_policy_30",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "31": {
+    "doc_name": "Reimbursement Policy",
+    "question": "12. What happens if a claim is rejected?",
+    "answer": "\u2022 Employees will be notified with the reason for rejection\n\u2022 Claims may be resubmitted after correction if applicable\n\u2022 HR\u2019s decision will be final in case of disputes",
+    "chunk_id": "reimbursement_policy_31",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "32": {
+    "doc_name": "Reimbursement Policy",
+    "question": "13. Is mobile and internet reimbursement mandatory every month?",
+    "answer": "No.\n\u2022 Employees may claim mobile/internet reimbursement only for months where official usage occurs\n\u2022 Maximum reimbursement allowed is \u20b91,000 per month",
+    "chunk_id": "reimbursement_policy_32",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "33": {
+    "doc_name": "Reimbursement Policy",
+    "question": "14. Can multiple reimbursements be claimed in a single month?",
+    "answer": "Yes.\n\u2022 Multiple claims are allowed provided they fall under approved categories and limits\n\u2022 Total monthly reimbursement must comply with defined caps",
+    "chunk_id": "reimbursement_policy_33",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "34": {
+    "doc_name": "Reimbursement Policy",
+    "question": "15. What is the policy for travel reimbursement?",
+    "answer": "\u2022 Economy class travel is reimbursable\n\u2022 Company-preferred vendors must be used when available\n\u2022 Travel plans must be optimized for cost and efficiency",
+    "chunk_id": "reimbursement_policy_34",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "35": {
+    "doc_name": "Reimbursement Policy",
+    "question": "16. What happens in case of false or inflated claims?",
+    "answer": "\u2022 Submission of false claims is considered misconduct\n\u2022 Disciplinary action may include:\n\u2013 Recovery of amount\n\u2013 Written warning\n\u2013 Suspension or termination in severe cases",
+    "chunk_id": "reimbursement_policy_35",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "36": {
+    "doc_name": "Reimbursement Policy",
+    "question": "17. Are taxes applicable on reimbursements?",
+    "answer": "\u2022 Reimbursements supported by valid bills are generally non-taxable\n\u2022 Any taxable component will be handled as per applicable income tax laws",
+    "chunk_id": "reimbursement_policy_36",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "37": {
+    "doc_name": "Reimbursement Policy",
+    "question": "18. Can management revise reimbursement limits?",
+    "answer": "Yes.\nManagement reserves the right to revise reimbursement categories, limits, or procedures based on business needs or statutory requirements, with approval from the Head of HR and Finance.",
+    "chunk_id": "reimbursement_policy_37",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "38": {
+    "doc_name": "Reimbursement Policy",
+    "question": "19. Who should employees contact for reimbursement-related queries?",
+    "answer": "Employees may contact:\n\u2022 Reporting Manager for approval-related queries\n\u2022 HR or Finance team for processing and payment-related queries",
+    "chunk_id": "reimbursement_policy_38",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  },
+  "39": {
+    "doc_name": "Reimbursement Policy",
+    "question": "20. Are exceptions allowed under this policy?",
+    "answer": "Exceptions may be granted only in genuine cases with written approval from the Head of HR and Finance.",
+    "chunk_id": "reimbursement_policy_39",
+    "document_metadata": {
+      "filename": "Reimbursement-Policy.pdf",
+      "file_location": "C:\\Mahin\\HR-Bot",
+      "file_type": ".pdf",
+      "file_size_kb": 53.23,
+      "last_modified_date": "2026-01-29 21:30:15"
+    }
+  }
+}
