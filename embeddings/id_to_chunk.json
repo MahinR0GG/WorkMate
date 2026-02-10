@@ -171,7 +171,7 @@
   "13": {
     "doc_name": "Leave Policy",
     "question": "4. What types of leave are available?",
-    "answer": "Employees are entitled to the following types of leave:",
+    "answer": "Employees are entitled to the following types of leave:\n\n\u2022 Privilege Leave (PL): 18 days per year\n\u2022 Casual Leave (CL): 12 days per year\n\u2022 Sick Leave (SL): 12 days per year\n\u2022 Maternity Leave: 26 weeks\n\u2022 Paternity Leave: 10 working days\n\u2022 Sabbatical Leave: Up to 1 year\n\u2022 Festival & National Holidays: 10 days\n\u2022 Unpaid Leave (LWP): As approved",
     "chunk_id": "leave_policy_3",
     "document_metadata": {
       "filename": "Leave-Policy.pdf",
@@ -301,7 +301,7 @@
   "23": {
     "doc_name": "Reimbursement Policy",
     "question": "4. What types of expenses are reimbursable?",
-    "answer": "Employees may claim reimbursement for the following categories:",
+    "answer": "Employees may claim reimbursement for the following expense categories:\n\n\u2022 Travel (Local Conveyance): \u20b93,000 per month\n\u2022 Travel (Outstation \u2013 Bus/Train): Actuals (Economy class)\n\u2022 Travel (Flight): Actuals (Economy class, prior approval required)\n\u2022 Food & Meals: \u20b9500 per day\n\u2022 Accommodation: \u20b92,500 per night\n\u2022 Mobile / Internet: \u20b91,000 per month\n\u2022 Client Entertainment: \u20b93,000 per event\n\u2022 Office Supplies: Actuals (approval required)\n\u2022 Training & Certification: Actuals (HR approval required)",
     "chunk_id": "reimbursement_policy_23",
     "document_metadata": {
       "filename": "Reimbursement-Policy.pdf",

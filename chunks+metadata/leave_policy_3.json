@@ -1,7 +1,7 @@
 {
     "doc_name": "Leave Policy",
     "question": "4. What types of leave are available?",
-    "answer": "Employees are entitled to the following types of leave:",
+    "answer": "Employees are entitled to the following types of leave:\n\n• Privilege Leave (PL): 18 days per year\n• Casual Leave (CL): 12 days per year\n• Sick Leave (SL): 12 days per year\n• Maternity Leave: 26 weeks\n• Paternity Leave: 10 working days\n• Sabbatical Leave: Up to 1 year\n• Festival & National Holidays: 10 days\n• Unpaid Leave (LWP): As approved",
     "chunk_id": "leave_policy_3",
     "document_metadata": {
         "filename": "Leave-Policy.pdf",

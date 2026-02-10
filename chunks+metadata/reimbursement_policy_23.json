@@ -1,7 +1,7 @@
 {
     "doc_name": "Reimbursement Policy",
     "question": "4. What types of expenses are reimbursable?",
-    "answer": "Employees may claim reimbursement for the following categories:",
+    "answer": "Employees may claim reimbursement for the following expense categories:\n\n• Travel (Local Conveyance): ₹3,000 per month\n• Travel (Outstation – Bus/Train): Actuals (Economy class)\n• Travel (Flight): Actuals (Economy class, prior approval required)\n• Food & Meals: ₹500 per day\n• Accommodation: ₹2,500 per night\n• Mobile / Internet: ₹1,000 per month\n• Client Entertainment: ₹3,000 per event\n• Office Supplies: Actuals (approval required)\n• Training & Certification: Actuals (HR approval required)",
     "chunk_id": "reimbursement_policy_23",
     "document_metadata": {
         "filename": "Reimbursement-Policy.pdf",
