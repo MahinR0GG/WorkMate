@@ -37,14 +37,14 @@ for file_name in os.listdir(CHUNKS_DIR):
 
 print(f"Loaded {len(texts)} chunks")
 
-# CREATE EMBEDDINGS
-embeddings = model.encode(texts, convert_to_numpy=True)
+# CREATE EMBEDDINGS (NORMALIZED)
+embeddings = model.encode(texts, convert_to_numpy=True, normalize_embeddings=True)
 
 dimension = embeddings.shape[1]
 print(f"Embedding dimension: {dimension}")
 
-# BUILD FAISS INDEX
-index = faiss.IndexFlatL2(dimension)
+# BUILD FAISS INDEX (Inner Product for cosine similarity with normalized embeddings)
+index = faiss.IndexFlatIP(dimension)
 index.add(embeddings)
 
 print("FAISS index created")
