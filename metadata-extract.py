@@ -31,7 +31,7 @@ class DocumentMetadataExtractor:
             ).strftime("%Y-%m-%d %H:%M:%S")
         }
 
-        def save_metadata_file(self, metadata):
+    def save_metadata_file(self, metadata):
         """
         Save metadata for a single document as JSON
         """
@@ -73,6 +73,6 @@ class DocumentMetadataExtractor:
 # -------------------- Usage --------------------
 if __name__ == "__main__":
     extractor = DocumentMetadataExtractor(
-        folder_path=r"C:\Mahin\HR-Bot"   # root directory
+        folder_path=r"C:\Users\Cymonic\Desktop\Cymonic\HR_BOT\WorkMate"   # root directory
     )
     extractor.run()

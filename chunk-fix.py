@@ -1,32 +1,32 @@
-# import json
+import json
 
-# file_path = r"C:\Mahin\HR-Bot\chunks+metadata\leave_policy_3.json"
+file_path = r"C:\Users\Cymonic\Desktop\Cymonic\HR_BOT\WorkMate\chunks+metadata\leave_policy_3.json"
 
-# updated_answer = (
-#     "Employees are entitled to the following types of leave:\n\n"
-#     "• Privilege Leave (PL): 18 days per year\n"
-#     "• Casual Leave (CL): 12 days per year\n"
-#     "• Sick Leave (SL): 12 days per year\n"
-#     "• Maternity Leave: 26 weeks\n"
-#     "• Paternity Leave: 10 working days\n"
-#     "• Sabbatical Leave: Up to 1 year\n"
-#     "• Festival & National Holidays: 10 days\n"
-#     "• Unpaid Leave (LWP): As approved"
-# )
+updated_answer = (
+     "Employees are entitled to the following types of leave:\n\n"
+     "• Privilege Leave (PL): 18 days per year\n"
+     "• Casual Leave (CL): 12 days per year\n"
+     "• Sick Leave (SL): 12 days per year\n"
+     "• Maternity Leave: 26 weeks\n"
+     "• Paternity Leave: 10 working days\n"
+     "• Sabbatical Leave: Up to 1 year\n"
+     "• Festival & National Holidays: 10 days\n"
+     "• Unpaid Leave (LWP): As approved"
+ )
 
-# with open(file_path, "r", encoding="utf-8") as f:
-#     chunk = json.load(f)
+with open(file_path, "r", encoding="utf-8") as f:
+     chunk = json.load(f)
 
-# chunk["answer"] = updated_answer
+chunk["answer"] = updated_answer
 
-# with open(file_path, "w", encoding="utf-8") as f:
-#     json.dump(chunk, f, indent=4, ensure_ascii=False)
+with open(file_path, "w", encoding="utf-8") as f:
+    json.dump(chunk, f, indent=4, ensure_ascii=False)
 
-# print("✅ leave_policy_3.json updated successfully")
+print("✅ leave_policy_3.json updated successfully")
 
 import json
 
-file_path = r"C:\Mahin\HR-Bot\chunks+metadata\reimbursement_policy_23.json"
+file_path = r"C:\Users\Cymonic\Desktop\Cymonic\HR_BOT\WorkMate\chunks+metadata\reimbursement_policy_23.json"
 
 updated_answer = (
     "Employees may claim reimbursement for the following expense categories:\n\n"
