@@ -7,31 +7,32 @@
 python-docx>=0.8.11
 
 # ============================================
-# Vector Database & Embeddings (Coming Soon)
+# Vector Database & Embeddings
 # ============================================
-# Uncomment when implementing vector DB integration
-# chromadb>=0.4.0              # Vector database for embeddings
-# sentence-transformers>=2.2.0  # For generating embeddings
-# langchain>=0.1.0             # RAG orchestration framework
+chromadb>=0.4.0              # Vector database for embeddings
+sentence-transformers>=2.2.0  # For generating embeddings (all-MiniLM-L6-v2)
+faiss-cpu>=1.7.0             # Fast similarity search
 
 # ============================================
-# LLM Integration (Planned)
+# LLM Integration - Ollama
 # ============================================
-# openai>=1.0.0                # OpenAI API integration
-# anthropic>=0.7.0             # Claude API (alternative)
-# transformers>=4.30.0         # Hugging Face models (local option)
+# google-genai>=1.0.0              # Google Gemini API (commented out - using Ollama now)
+ollama>=0.1.0                     # Ollama Python client
 
 # ============================================
-# API & Web Interface (Future)
+# API & Web Server
 # ============================================
-# fastapi>=0.104.0             # REST API framework
-# uvicorn>=0.24.0              # ASGI server
-# streamlit>=1.28.0            # Quick web UI (alternative)
-# gradio>=4.0.0                # Interactive UI (alternative)
+fastapi>=0.104.0             # REST API framework
+uvicorn>=0.24.0              # ASGI server
 
 # ============================================
 # Utilities
 # ============================================
-# python-dotenv>=1.0.0         # Environment variable management
-# pydantic>=2.0.0              # Data validation
-# loguru>=0.7.0                # Enhanced logging
+python-dotenv>=1.0.0         # Environment variable management
+pydantic>=2.0.0              # Data validation
+numpy>=1.21.0                # Numerical computing (required by FAISS)
+
+# ============================================
+# Testing UI (Optional)
+# ============================================
+streamlit>=1.28.0            # Quick web UI for testing

@@ -3,10 +3,13 @@ import json
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
-import google.generativeai as genai
+# import google.generativeai as genai  # Commented out - using Ollama now
+import ollama
 
 from config import (
-    GEMINI_API_KEY,
+    # GEMINI_API_KEY,  # Commented out - using Ollama now
+    OLLAMA_BASE_URL,
+    OLLAMA_MODEL,
     FAISS_INDEX_PATH,
     ID_TO_CHUNK_PATH,
     EMBEDDING_MODEL,
@@ -36,10 +39,11 @@ with open(ID_TO_CHUNK_PATH, "r", encoding="utf-8") as f:
 print(f"Loaded {len(id_to_chunk)} chunks")
 
 # =========================
-# GEMINI SETUP
+# OLLAMA SETUP
 # =========================
-genai.configure(api_key=GEMINI_API_KEY)
-gemini_model = genai.GenerativeModel("gemini-1.5-flash")
+# genai.configure(api_key=GEMINI_API_KEY)  # Commented out - using Ollama now
+# gemini_model = genai.GenerativeModel("gemini-1.5-flash")  # Commented out - using Ollama now
+ollama_client = ollama.Client(host=OLLAMA_BASE_URL)
 
 # =========================
 # EMBED QUERY
@@ -127,8 +131,16 @@ Answer:
 # GENERATE ANSWER
 # =========================
 def generate_answer(prompt):
-    response = gemini_model.generate_content(prompt)
-    return response.text.strip()
+    response = ollama_client.chat(
+        model=OLLAMA_MODEL,
+        messages=[
+            {
+                'role': 'user',
+                'content': prompt
+            }
+        ]
+    )
+    return response['message']['content'].strip()
 
 # =========================
 # MAIN BOT FUNCTION
