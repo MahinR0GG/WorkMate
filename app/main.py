@@ -5,6 +5,7 @@ RAG-based HR assistant for answering policy questions
 
 from fastapi import FastAPI
 from app.routes import chat
+from database.sqlite_db import init_db
 import uvicorn
 
 app = FastAPI(
@@ -15,6 +16,12 @@ app = FastAPI(
 
 # Include routers
 app.include_router(chat.router)
+
+@app.on_event("startup")
+def startup_event():
+    """Initialize the SQLite database on server startup."""
+    print("FastAPI is starting...")
+    init_db()
 
 @app.get("/")
 def read_root():

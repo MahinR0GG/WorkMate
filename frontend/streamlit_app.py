@@ -6,6 +6,7 @@ Run with: streamlit run streamlit_app.py
 import streamlit as st
 import requests
 import json
+import uuid
 
 # ============================================
 # Configuration
@@ -110,6 +111,10 @@ with st.sidebar:
 # ============================================
 # Chat History
 # ============================================
+# Generate a unique session ID once per browser tab session
+if "session_id" not in st.session_state:
+    st.session_state.session_id = str(uuid.uuid4())
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
@@ -143,7 +148,10 @@ if "sample_question" in st.session_state:
             try:
                 response = requests.post(
                     CHAT_ENDPOINT,
-                    json={"question": question},
+                    json={
+                        "question": question,
+                        "session_id": st.session_state.session_id
+                    },
                     timeout=30
                 )
                 if response.status_code == 200:
@@ -174,7 +182,10 @@ if question := st.chat_input("Ask an HR question..."):
             try:
                 response = requests.post(
                     CHAT_ENDPOINT,
-                    json={"question": question},
+                    json={
+                        "question": question,
+                        "session_id": st.session_state.session_id
+                    },
                     timeout=30
                 )
                 if response.status_code == 200:

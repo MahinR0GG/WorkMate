@@ -1,38 +1,37 @@
 # HR-Bot Requirements
-# Python 3.8+ recommended
+# Python 3.10+ recommended
 
 # ============================================
 # Core Document Processing
 # ============================================
-python-docx>=0.8.11
+python-docx>=0.8.11              # .docx file parsing for HR policy documents
 
 # ============================================
 # Vector Database & Embeddings
 # ============================================
-chromadb>=0.4.0              # Vector database for embeddings
-sentence-transformers>=2.2.0  # For generating embeddings (all-MiniLM-L6-v2)
-faiss-cpu>=1.7.0             # Fast similarity search
+sentence-transformers>=2.2.0     # Embedding model (all-MiniLM-L6-v2)
+faiss-cpu>=1.7.0                 # Fast similarity search (FAISS index)
+numpy>=1.24.0                    # Numerical ops required by FAISS & embeddings
 
 # ============================================
 # LLM Integration - Ollama
 # ============================================
-# google-genai>=1.0.0              # Google Gemini API (commented out - using Ollama now)
-ollama>=0.1.0                     # Ollama Python client
+ollama>=0.1.0                    # Ollama Python client (llama3 model)
 
 # ============================================
 # API & Web Server
 # ============================================
-fastapi>=0.104.0             # REST API framework
-uvicorn>=0.24.0              # ASGI server
+fastapi>=0.104.0                 # REST API framework
+uvicorn>=0.24.0                  # ASGI server for FastAPI
+pydantic>=2.0.0                  # Request/response data validation
+
+# ============================================
+# Frontend
+# ============================================
+streamlit>=1.28.0                # Streamlit chat UI
+requests>=2.31.0                 # HTTP client used by Streamlit to call API
 
 # ============================================
 # Utilities
 # ============================================
-python-dotenv>=1.0.0         # Environment variable management
-pydantic>=2.0.0              # Data validation
-numpy>=1.21.0                # Numerical computing (required by FAISS)
-
-# ============================================
-# Testing UI (Optional)
-# ============================================
-streamlit>=1.28.0            # Quick web UI for testing
+python-dotenv>=1.0.0             # .env file loading for config
