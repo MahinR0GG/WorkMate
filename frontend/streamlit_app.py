@@ -87,9 +87,9 @@ with st.sidebar:
             st.success("✅ API Server Online")
         else:
             st.error("❌ API Server Error")
-    except requests.ConnectionError:
+    except (requests.ConnectionError, requests.Timeout):
         st.error("❌ API Server Offline")
-        st.caption("Run `python main.py` to start the server")
+        st.caption("Run `python run.py` to start the server")
     
     st.divider()
     
@@ -152,7 +152,7 @@ if "sample_question" in st.session_state:
                         "question": question,
                         "session_id": st.session_state.session_id
                     },
-                    timeout=30
+                    timeout=120  # Ollama/llama3 can take time on first load
                 )
                 if response.status_code == 200:
                     answer = response.json().get("answer", "No answer received")
@@ -162,10 +162,12 @@ if "sample_question" in st.session_state:
                     error_msg = f"Error: {response.status_code} - {response.text}"
                     st.error(error_msg)
                     st.session_state.messages.append({"role": "assistant", "content": error_msg})
+            except requests.Timeout:
+                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
             except requests.ConnectionError:
-                st.error("Cannot connect to API server. Make sure `python main.py` is running.")
+                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
             except Exception as e:
-                st.error(f"Error: {str(e)}")
+                st.error(f"Unexpected error: {str(e)}")
 
 # ============================================
 # Chat Input
@@ -186,7 +188,7 @@ if question := st.chat_input("Ask an HR question..."):
                         "question": question,
                         "session_id": st.session_state.session_id
                     },
-                    timeout=30
+                    timeout=120  # Ollama/llama3 can take time on first load
                 )
                 if response.status_code == 200:
                     answer = response.json().get("answer", "No answer received")
@@ -196,10 +198,12 @@ if question := st.chat_input("Ask an HR question..."):
                     error_msg = f"Error: {response.status_code} - {response.text}"
                     st.error(error_msg)
                     st.session_state.messages.append({"role": "assistant", "content": error_msg})
+            except requests.Timeout:
+                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
             except requests.ConnectionError:
-                st.error("Cannot connect to API server. Make sure `python main.py` is running.")
+                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
             except Exception as e:
-                st.error(f"Error: {str(e)}")
+                st.error(f"Unexpected error: {str(e)}")
 
 # ============================================
 # Footer
