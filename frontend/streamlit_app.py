@@ -1,218 +1,187 @@
 """
-Streamlit UI for HR Bot - Testing Interface
-Run with: streamlit run streamlit_app.py
+HR Bot - Streamlit UI
+Clean, simple chat interface with purple accent theme
 """
 
 import streamlit as st
 import requests
-import json
 import uuid
 
-# ============================================
-# Configuration
-# ============================================
-API_URL = "http://localhost:8000"
-CHAT_ENDPOINT = f"{API_URL}/chat/"
-
-# ============================================
-# Page Config
-# ============================================
+# ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="HR Bot",
     page_icon="🤖",
-    layout="centered"
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
-# ============================================
-# Custom CSS
-# ============================================
+# ── Session state ──────────────────────────────────────────────────────────────
+if "session_id" not in st.session_state:
+    st.session_state.session_id = str(uuid.uuid4())
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# ── API config ─────────────────────────────────────────────────────────────────
+API_URL       = "http://localhost:8000"
+CHAT_ENDPOINT = f"{API_URL}/chat/"
+
+# ── Minimal CSS polish ─────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-    .stApp {
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    .chat-message {
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-bottom: 1rem;
-    }
-    .user-message {
-        background-color: #e3f2fd;
-        border-left: 4px solid #2196F3;
-    }
-    .bot-message {
-        background-color: #f5f5f5;
-        border-left: 4px solid #4CAF50;
-    }
-    .error-message {
-        background-color: #ffebee;
-        border-left: 4px solid #f44336;
-    }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+  html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif !important;
+  }
+
+  /* Hide Streamlit chrome */
+  #MainMenu, footer, header { visibility: hidden; }
+
+  /* Tighten page padding */
+  .block-container {
+    padding-top: 2rem !important;
+    max-width: 720px !important;
+  }
+
+  /* Title underline accent */
+  .brand-wrap { margin-bottom: 1.6rem; }
+  .brand-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin: 0;
+    color: inherit;
+  }
+  .brand-line {
+    width: 48px;
+    height: 4px;
+    background: #7C3AED;
+    border-radius: 2px;
+    margin: 6px 0 8px 0;
+  }
+  .brand-sub {
+    font-size: 0.88rem;
+    opacity: 0.55;
+    margin: 0;
+  }
+
+  /* Sidebar */
+  [data-testid="stSidebar"] {
+    padding-top: 1.5rem;
+  }
+
+  /* Sample question buttons - compact */
+  .stButton > button {
+    border-radius: 8px !important;
+    font-size: 0.82rem !important;
+    padding: 0.35rem 0.75rem !important;
+    text-align: left !important;
+    transition: border-color 0.15s;
+  }
+  .stButton > button:hover {
+    border-color: #7C3AED !important;
+    color: #7C3AED !important;
+  }
+
+  /* Chat messages — tighten spacing */
+  [data-testid="stChatMessage"] {
+    padding: 0.6rem 0 !important;
+  }
 </style>
 """, unsafe_allow_html=True)
 
-# ============================================
-# Header
-# ============================================
-st.title("🤖 HR Bot Assistant")
-st.caption("Ask questions about Leave Policy & Reimbursement Policy")
-
-# ============================================
-# Sidebar
-# ============================================
+# ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.header("About")
-    st.markdown("""
-    **HR Bot** uses RAG (Retrieval-Augmented Generation) to answer 
-    your HR policy questions.
-    
-    **Policies covered:**
-    - 📋 Leave Policy
-    - 💰 Reimbursement Policy
-    
-    **How it works:**
-    1. Your question is converted to an embedding
-    2. Similar policy chunks are retrieved via FAISS
-    3. Ollama generates an answer using the context
-    """)
-    
+    st.markdown("#### 🤖 HR Bot")
+    st.caption("RAG-powered HR policy assistant")
     st.divider()
-    
-    # Health check
-    st.subheader("Server Status")
+
+    # Server status
+    st.markdown("**Server Status**")
     try:
-        health = requests.get(f"{API_URL}/health", timeout=3)
-        if health.status_code == 200:
-            st.success("✅ API Server Online")
+        h = requests.get(f"{API_URL}/health", timeout=3)
+        if h.status_code == 200:
+            st.success("API Online", icon="✅")
         else:
-            st.error("❌ API Server Error")
+            st.error("API Error", icon="❌")
     except (requests.ConnectionError, requests.Timeout):
-        st.error("❌ API Server Offline")
-        st.caption("Run `python run.py` to start the server")
-    
+        st.error("API Offline — run `python run.py`", icon="❌")
+
     st.divider()
-    
+
     # Sample questions
-    st.subheader("Sample Questions")
-    sample_questions = [
-        "How much leave do I get per year?",
+    st.markdown("**Try asking…**")
+    samples = [
+        "How many leaves do I get per year?",
         "What is sabbatical leave?",
         "How do I submit a reimbursement claim?",
         "What is Leave Without Pay?",
         "What types of leave are available?",
-        "What are the eligibility criteria for reimbursement?",
+        "Eligibility for reimbursement?",
     ]
-    
-    for q in sample_questions:
+    for q in samples:
         if st.button(q, key=q, use_container_width=True):
-            st.session_state.sample_question = q
+            st.session_state.pending_question = q
 
-# ============================================
-# Chat History
-# ============================================
-# Generate a unique session ID once per browser tab session
-if "session_id" not in st.session_state:
-    st.session_state.session_id = str(uuid.uuid4())
+    st.divider()
 
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    # Policies covered
+    st.markdown("**Policies covered**")
+    st.markdown("📋 Leave Policy  \n💰 Reimbursement Policy")
 
-# Display chat history
-for message in st.session_state.messages:
-    role = message["role"]
-    content = message["content"]
-    
-    if role == "user":
-        with st.chat_message("user", avatar="👤"):
-            st.markdown(content)
-    else:
-        with st.chat_message("assistant", avatar="🤖"):
-            st.markdown(content)
+    st.divider()
 
-# ============================================
-# Handle sample question from sidebar
-# ============================================
-if "sample_question" in st.session_state:
-    question = st.session_state.sample_question
-    del st.session_state.sample_question
-    
-    # Add user message
-    st.session_state.messages.append({"role": "user", "content": question})
-    with st.chat_message("user", avatar="👤"):
-        st.markdown(question)
-    
-    # Get bot response
-    with st.chat_message("assistant", avatar="🤖"):
-        with st.spinner("Thinking..."):
-            try:
-                response = requests.post(
-                    CHAT_ENDPOINT,
-                    json={
-                        "question": question,
-                        "session_id": st.session_state.session_id
-                    },
-                    timeout=120  # Ollama/llama3 can take time on first load
-                )
-                if response.status_code == 200:
-                    answer = response.json().get("answer", "No answer received")
-                    st.markdown(answer)
-                    st.session_state.messages.append({"role": "assistant", "content": answer})
-                else:
-                    error_msg = f"Error: {response.status_code} - {response.text}"
-                    st.error(error_msg)
-                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
-            except requests.Timeout:
-                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
-            except requests.ConnectionError:
-                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
-            except Exception as e:
-                st.error(f"Unexpected error: {str(e)}")
-
-# ============================================
-# Chat Input
-# ============================================
-if question := st.chat_input("Ask an HR question..."):
-    # Add user message
-    st.session_state.messages.append({"role": "user", "content": question})
-    with st.chat_message("user", avatar="👤"):
-        st.markdown(question)
-    
-    # Get bot response
-    with st.chat_message("assistant", avatar="🤖"):
-        with st.spinner("Thinking..."):
-            try:
-                response = requests.post(
-                    CHAT_ENDPOINT,
-                    json={
-                        "question": question,
-                        "session_id": st.session_state.session_id
-                    },
-                    timeout=120  # Ollama/llama3 can take time on first load
-                )
-                if response.status_code == 200:
-                    answer = response.json().get("answer", "No answer received")
-                    st.markdown(answer)
-                    st.session_state.messages.append({"role": "assistant", "content": answer})
-                else:
-                    error_msg = f"Error: {response.status_code} - {response.text}"
-                    st.error(error_msg)
-                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
-            except requests.Timeout:
-                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
-            except requests.ConnectionError:
-                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
-            except Exception as e:
-                st.error(f"Unexpected error: {str(e)}")
-
-# ============================================
-# Footer
-# ============================================
-st.divider()
-col1, col2 = st.columns(2)
-with col1:
-    st.caption("Powered by Ollama + FAISS")
-with col2:
-    if st.button("Clear Chat", use_container_width=True):
+    if st.button("🗑️ Clear Chat", use_container_width=True):
         st.session_state.messages = []
+        st.session_state.session_id = str(uuid.uuid4())
         st.rerun()
+
+# ── Header ─────────────────────────────────────────────────────────────────────
+st.markdown("""
+<div class="brand-wrap">
+  <p class="brand-title">HR Bot</p>
+  <div class="brand-line"></div>
+  <p class="brand-sub">Ask questions about your company's Leave &amp; Reimbursement policies.</p>
+</div>
+""", unsafe_allow_html=True)
+
+# ── Chat history ───────────────────────────────────────────────────────────────
+for msg in st.session_state.messages:
+    avatar = "👤" if msg["role"] == "user" else "🤖"
+    with st.chat_message(msg["role"], avatar=avatar):
+        st.markdown(msg["content"])
+
+# ── Send helper ────────────────────────────────────────────────────────────────
+def send(question: str):
+    st.session_state.messages.append({"role": "user", "content": question})
+    with st.chat_message("user", avatar="👤"):
+        st.markdown(question)
+    with st.chat_message("assistant", avatar="🤖"):
+        with st.spinner("Thinking…"):
+            try:
+                resp = requests.post(
+                    CHAT_ENDPOINT,
+                    json={"question": question, "session_id": st.session_state.session_id},
+                    timeout=120
+                )
+                if resp.status_code == 200:
+                    answer = resp.json().get("answer", "No answer received.")
+                else:
+                    answer = f"⚠️ Error {resp.status_code}: {resp.text}"
+            except requests.Timeout:
+                answer = "⏳ Timed out — Ollama may still be loading. Please try again."
+            except requests.ConnectionError:
+                answer = "❌ Cannot reach the API. Make sure `python run.py` is running."
+            except Exception as e:
+                answer = f"Unexpected error: {e}"
+        st.markdown(answer)
+        st.session_state.messages.append({"role": "assistant", "content": answer})
+
+# ── Handle sidebar sample question ────────────────────────────────────────────
+if "pending_question" in st.session_state:
+    q = st.session_state.pop("pending_question")
+    send(q)
+
+# ── Chat input ─────────────────────────────────────────────────────────────────
+if question := st.chat_input("Ask an HR question…"):
+    send(question)
