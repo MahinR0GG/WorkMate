@@ -36,9 +36,6 @@ def generate_answer(question: str, session_id: str) -> str:
             history_text = "No previous conversation."
 
         # 2. Build a contextualized search query for FAISS.
-        # Follow-up questions like "Can I carry them forward?" have no HR keywords
-        # on their own. Prepending the last assistant reply gives the embedding
-        # model the topic context it needs to find relevant policy chunks.
         last_assistant = next(
             (msg["content"] for msg in reversed(history) if msg["role"] == "assistant"),
             None

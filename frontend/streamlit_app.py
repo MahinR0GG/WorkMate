@@ -90,6 +90,37 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# ── Send helper ────────────────────────────────────────────────────────────────
+def send(question: str):
+    st.session_state.messages.append({"role": "user", "content": question})
+    with st.chat_message("user", avatar="👤"):
+        st.markdown(question)
+    with st.chat_message("assistant", avatar="🤖"):
+        with st.spinner("Thinking…"):
+            try:
+                response = requests.post(
+                    CHAT_ENDPOINT,
+                    json={
+                        "question": question,
+                        "session_id": st.session_state.session_id
+                    },
+                    timeout=120  # Ollama/llama3 can take time on first load
+                )
+                if response.status_code == 200:
+                    answer = response.json().get("answer", "No answer received.")
+                    st.markdown(answer)
+                    st.session_state.messages.append({"role": "assistant", "content": answer})
+                else:
+                    error_msg = f"Error: {response.status_code} - {response.text}"
+                    st.error(error_msg)
+                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
+            except requests.Timeout:
+                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
+            except requests.ConnectionError:
+                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
+            except Exception as e:
+                st.error(f"Unexpected error: {str(e)}")
+
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 with st.sidebar:
     st.markdown("#### 🤖 HR Bot")
@@ -152,70 +183,11 @@ for msg in st.session_state.messages:
     with st.chat_message(msg["role"], avatar=avatar):
         st.markdown(msg["content"])
 
-# ── Send helper ────────────────────────────────────────────────────────────────
-def send(question: str):
-    st.session_state.messages.append({"role": "user", "content": question})
-    with st.chat_message("user", avatar="👤"):
-        st.markdown(question)
-    with st.chat_message("assistant", avatar="🤖"):
-        with st.spinner("Thinking…"):
-            try:
-                resp = requests.post(
-                    CHAT_ENDPOINT,
-                    json={
-                        "question": question,
-                        "session_id": st.session_state.session_id
-                    },
-                    timeout=120  # Ollama/llama3 can take time on first load
-                )
-                if resp.status_code == 200:
-                    answer = resp.json().get("answer", "No answer received.")
-                else:
-                    error_msg = f"Error: {response.status_code} - {response.text}"
-                    st.error(error_msg)
-                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
-            except requests.Timeout:
-                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
-            except requests.ConnectionError:
-                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
-            except Exception as e:
-                st.error(f"Unexpected error: {str(e)}")
-
-# ============================================
-# Chat Input
-# ============================================
-if question := st.chat_input("Ask an HR question..."):
-    # Add user message
-    st.session_state.messages.append({"role": "user", "content": question})
-    with st.chat_message("user", avatar="👤"):
-        st.markdown(question)
-    
-    # Get bot response
-    with st.chat_message("assistant", avatar="🤖"):
-        with st.spinner("Thinking..."):
-            try:
-                response = requests.post(
-                    CHAT_ENDPOINT,
-                    json={
-                        "question": question,
-                        "session_id": st.session_state.session_id
-                    },
-                    timeout=120  # Ollama/llama3 can take time on first load
-                )
-                if response.status_code == 200:
-                    answer = response.json().get("answer", "No answer received")
-                    st.markdown(answer)
-                    st.session_state.messages.append({"role": "assistant", "content": answer})
-                else:
-                    error_msg = f"Error: {response.status_code} - {response.text}"
-                    st.error(error_msg)
-                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
-            except requests.Timeout:
-                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
-            except requests.ConnectionError:
-                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
-            except Exception as e:
-                st.error(f"Unexpected error: {str(e)}")
+# ── Handle sidebar sample question clicks ──────────────────────────────────────
+if "pending_question" in st.session_state:
+    q = st.session_state.pop("pending_question")
+    send(q)
+    st.rerun()
 
 # ── Chat input ─────────────────────────────────────────────────────────────────
 if question := st.chat_input("Ask an HR question…"):

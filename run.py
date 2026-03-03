@@ -1,7 +1,4 @@
-"""
-Root entry point for the HR Bot API
-Run from the project root with: python run.py
-"""
+#python run.py
 
 import uvicorn
 from app.main import app

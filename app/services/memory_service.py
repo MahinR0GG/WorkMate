@@ -26,3 +26,4 @@ def clear_memory(session_id: str):
     conn.execute("DELETE FROM conversations WHERE session_id = ?", (session_id,))
     conn.commit()
     conn.close()
+

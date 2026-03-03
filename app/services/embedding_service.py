@@ -28,3 +28,4 @@ def get_embedding(text: str) -> list[float]:
     except Exception as e:
         print(f"Error generating embedding: {str(e)}")
         raise
+    
