@@ -10,10 +10,22 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ============================================
+# LLM Provider — controls which LangChain model is used
+# Phase 1: "ollama"  |  Phase 2: "azure"
+# ============================================
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama")
+
+# ============================================
 # LLM Configuration - Ollama
 # ============================================
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")    
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_MODEL    = os.getenv("OLLAMA_MODEL", "llama3")
+
+# ── Phase 2: Azure OpenAI (uncomment when ready) ────────────────────────────
+# AZURE_OPENAI_ENDPOINT  = os.getenv("AZURE_OPENAI_ENDPOINT", "")
+# AZURE_OPENAI_API_KEY   = os.getenv("AZURE_OPENAI_API_KEY", "")
+# AZURE_DEPLOYMENT_NAME  = os.getenv("AZURE_DEPLOYMENT_NAME", "gpt-4o")
+# AZURE_API_VERSION      = os.getenv("AZURE_API_VERSION", "2024-02-01")
 
 # ============================================
 # Vector Database Paths  (relative to project root)

@@ -14,9 +14,14 @@ faiss-cpu>=1.7.0                 # Fast similarity search (FAISS index)
 numpy>=1.24.0                    # Numerical ops required by FAISS & embeddings
 
 # ============================================
-# LLM Integration - Ollama
+# LLM Orchestration - LangChain
 # ============================================
-ollama>=0.1.0                    # Ollama Python client (llama3 model)
+langchain>=0.3.0                 # Core LangChain framework
+langchain-core>=0.3.0            # LangChain base abstractions (LCEL, prompts, etc.)
+langchain-ollama>=0.2.0          # ChatOllama wrapper for local Ollama models
+
+# Phase 2 (Azure OpenAI) — install when ready:
+# langchain-openai>=0.2.0        # AzureChatOpenAI wrapper
 
 # ============================================
 # API & Web Server
