@@ -103,10 +103,11 @@ with st.sidebar:
         if h.status_code == 200:
             st.success("API Online", icon="✅")
         else:
-            st.error("API Error", icon="❌")
+            st.error("❌ API Server Error")
     except (requests.ConnectionError, requests.Timeout):
-        st.error("API Offline — run `python run.py`", icon="❌")
-
+        st.error("❌ API Server Offline")
+        st.caption("Run `python run.py` to start the server")
+    
     st.divider()
 
     # Sample questions
@@ -161,26 +162,60 @@ def send(question: str):
             try:
                 resp = requests.post(
                     CHAT_ENDPOINT,
-                    json={"question": question, "session_id": st.session_state.session_id},
-                    timeout=120
+                    json={
+                        "question": question,
+                        "session_id": st.session_state.session_id
+                    },
+                    timeout=120  # Ollama/llama3 can take time on first load
                 )
                 if resp.status_code == 200:
                     answer = resp.json().get("answer", "No answer received.")
                 else:
-                    answer = f"⚠️ Error {resp.status_code}: {resp.text}"
+                    error_msg = f"Error: {response.status_code} - {response.text}"
+                    st.error(error_msg)
+                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
             except requests.Timeout:
-                answer = "⏳ Timed out — Ollama may still be loading. Please try again."
+                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
             except requests.ConnectionError:
-                answer = "❌ Cannot reach the API. Make sure `python run.py` is running."
+                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
             except Exception as e:
-                answer = f"Unexpected error: {e}"
-        st.markdown(answer)
-        st.session_state.messages.append({"role": "assistant", "content": answer})
+                st.error(f"Unexpected error: {str(e)}")
 
-# ── Handle sidebar sample question ────────────────────────────────────────────
-if "pending_question" in st.session_state:
-    q = st.session_state.pop("pending_question")
-    send(q)
+# ============================================
+# Chat Input
+# ============================================
+if question := st.chat_input("Ask an HR question..."):
+    # Add user message
+    st.session_state.messages.append({"role": "user", "content": question})
+    with st.chat_message("user", avatar="👤"):
+        st.markdown(question)
+    
+    # Get bot response
+    with st.chat_message("assistant", avatar="🤖"):
+        with st.spinner("Thinking..."):
+            try:
+                response = requests.post(
+                    CHAT_ENDPOINT,
+                    json={
+                        "question": question,
+                        "session_id": st.session_state.session_id
+                    },
+                    timeout=120  # Ollama/llama3 can take time on first load
+                )
+                if response.status_code == 200:
+                    answer = response.json().get("answer", "No answer received")
+                    st.markdown(answer)
+                    st.session_state.messages.append({"role": "assistant", "content": answer})
+                else:
+                    error_msg = f"Error: {response.status_code} - {response.text}"
+                    st.error(error_msg)
+                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
+            except requests.Timeout:
+                st.error("⏳ Request timed out. Ollama may still be loading the model — please try again in a moment.")
+            except requests.ConnectionError:
+                st.error("❌ Cannot connect to API server. Make sure `python run.py` is running.")
+            except Exception as e:
+                st.error(f"Unexpected error: {str(e)}")
 
 # ── Chat input ─────────────────────────────────────────────────────────────────
 if question := st.chat_input("Ask an HR question…"):
