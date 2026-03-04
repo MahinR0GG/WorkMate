@@ -8,6 +8,11 @@ import json
 import numpy as np
 from app.core.config import FAISS_INDEX_PATH, ID_TO_CHUNK_PATH, TOP_K, SIMILARITY_THRESHOLD
 
+# the embedding model is defined in embedding_service; vector service
+# can leverage it for convenience when encoding text before searching.
+from app.services.embedding_service import model as embedding_model
+from app.services.embedding_service import get_embedding
+
 
 class VectorSearchService:
     """Service for searching similar chunks using FAISS"""
@@ -67,3 +72,14 @@ def get_vector_service():
 def search_similar_chunks(query_embedding: list[float]) -> list[dict]:
     """Convenience function to search similar chunks"""
     return get_vector_service().search_similar_chunks(query_embedding)
+
+def embed_text(text: str) -> np.ndarray:
+    """Helper to encode text using the shared sentence‑transformer model.
+
+    This is mostly for backwards compatibility/utility; other code should
+    preferably call :func:`get_embedding` since it handles list output and
+    normalization. The returned array is **not** normalized (caller may want to
+    set ``normalize_embeddings=True`` when passing to FAISS).
+    """
+    # use the imported model from embedding_service
+    return embedding_model.encode([text], normalize_embeddings=False)[0]

@@ -18,11 +18,19 @@ def get_connection() -> sqlite3.Connection:
 def init_db():
     """Initialize the SQLite database and create tables if they don't exist."""
     print("Initializing SQLite database...")
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
 
-    conn = get_connection()
-    cursor = conn.cursor()
+    cur.execute("""
+CREATE TABLE IF NOT EXISTS memories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL,
+    memory_text TEXT NOT NULL,
+    created_at TEXT NOT NULL
+)
+""")
 
-    cursor.execute("""
+    cur.execute("""
         CREATE TABLE IF NOT EXISTS conversations (
             id          INTEGER PRIMARY KEY AUTOINCREMENT,
             session_id  TEXT NOT NULL,
@@ -56,7 +64,7 @@ def save_message(session_id: str, role: str, content: str):
     conn.close()
 
 
-def get_history(session_id: str, limit: int = 10) -> list[dict]:
+def get_history(session_id: str, limit: int = 25) -> list[dict]:
     """
     Retrieve recent conversation history for a session in chronological order.
 

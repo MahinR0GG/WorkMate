@@ -12,7 +12,6 @@ from database.sqlite_db import get_history, save_message
 # Configure Ollama client
 ollama_client = ollama.Client(host=OLLAMA_BASE_URL)
 
-
 def generate_answer(question: str, session_id: str) -> str:
     """
     Full RAG + memory pipeline:

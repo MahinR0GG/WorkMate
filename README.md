@@ -126,6 +126,39 @@ python chunk-metadata-merger.py
 python run_chunker.py
 ```
 
+### Starting the API Server
+
+The HTTP backend lives in the `app/` package. **Do not execute `app/main.py`
+directly**; doing so sets `sys.path[0]` to the `app/` directory, which makes the
+`app` package itself unimportable and triggers the `ModuleNotFoundError`
+reported earlier.
+
+Use one of the following methods from the project root:
+
+```bash
+# preferred: simple entrypoint
+python run.py
+
+# or run as a module (ensures project root is on PYTHONPATH)
+python -m app.main
+
+# or let uvicorn start it directly with autoreload
+uvicorn app.main:app --reload
+```
+
+# or run as a module (ensures project root is on PYTHONPATH)
+python -m app.main
+
+# or let uvicorn start it directly
+uvicorn app.main:app --reload
+```
+
+All three approaches correctly place the workspace root on `sys.path`, allowing
+`from app.routes import ...` to succeed.
+
+(The `app/__init__.py` file was added so that the folder is recognized as a
+package.)
+
 ## 📦 Installation
 
 ```bash
