@@ -41,8 +41,13 @@ EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
 # ============================================
 # Search Parameters
 # ============================================
-TOP_K = int(os.getenv("TOP_K", "4"))  # Number of chunks to retrieve
+TOP_K = int(os.getenv("TOP_K", "4"))                                  # Number of chunks to retrieve
 SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.3"))  # Min similarity score
+
+# ============================================
+# Short-Term Memory (STM) — token budget
+# ============================================
+MAX_STM_TOKENS = int(os.getenv("MAX_STM_TOKENS", "1000"))  # Max tokens kept in LangChain STM
 
 # ============================================
 # API Settings

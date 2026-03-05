@@ -1,13 +1,20 @@
 """
 LLM Service - Handles RAG pipeline using LangChain for orchestration.
-Orchestrates embedding, FAISS search, SQLite memory, and LLM response generation.
+Orchestrates embedding, FAISS search, LangChain STM, and LLM response generation.
+
+Memory architecture:
+  - STM (stm_service)   : In-RAM, token-aware, session-scoped — feeds the LLM context window
+  - SQLite (sqlite_db)  : Persistent, used for Streamlit UI chat display history
 """
 
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.messages import HumanMessage, AIMessage
+
 from app.services.llm_factory import get_llm
 from app.services.embedding_service import get_embedding
 from app.services.vector_service import search_similar_chunks
-from database.sqlite_db import get_history, save_message
+from app.services.stm_service import add_message, get_trimmed_memory
+from database.sqlite_db import save_message
 
 
 # ── System prompt ──────────────────────────────────────────────────────────────
@@ -35,26 +42,30 @@ _prompt = ChatPromptTemplate.from_messages([
 
 def generate_answer(question: str, session_id: str) -> str:
     """
-    Full RAG + memory pipeline (LangChain orchestrated):
-    1. Fetch recent conversation history from SQLite
+    Full RAG + STM pipeline:
+    1. Fetch token-trimmed conversation history from LangChain STM
     2. Build a contextualized FAISS query (last assistant turn + new question)
     3. Embed query → search FAISS for relevant HR policy chunks
     4. Build structured prompt (ChatPromptTemplate)
     5. Invoke LangChain chain: prompt | LLM
-    6. Save both turns (user + assistant) to SQLite
+    6. Store both turns in STM (in-RAM) and SQLite (persistent UI display)
     """
     try:
-        # 1. Fetch conversation history
-        history = get_history(session_id, limit=10)
+        # 1. Fetch token-trimmed STM history
+        stm_messages = get_trimmed_memory(session_id)
 
-        history_text = (
-            "\n".join(f"{msg['role'].upper()}: {msg['content']}" for msg in history)
-            if history else "No previous conversation."
-        )
+        # Format history as a readable string for the prompt
+        history_parts = []
+        for msg in stm_messages:
+            if isinstance(msg, HumanMessage):
+                history_parts.append(f"USER: {msg.content}")
+            elif isinstance(msg, AIMessage):
+                history_parts.append(f"ASSISTANT: {msg.content}")
+        history_text = "\n".join(history_parts) if history_parts else "No previous conversation."
 
-        # 2. Contextualized FAISS query (blend last assistant reply + new question)
+        # 2. Contextualized FAISS query (last assistant reply + new question)
         last_assistant = next(
-            (msg["content"] for msg in reversed(history) if msg["role"] == "assistant"),
+            (msg.content for msg in reversed(stm_messages) if isinstance(msg, AIMessage)),
             None,
         )
         faiss_query = f"{last_assistant}\n{question}" if last_assistant else question
@@ -68,6 +79,9 @@ def generate_answer(question: str, session_id: str) -> str:
                 "I couldn't find relevant HR policy information for your question. "
                 "Please contact HR for assistance."
             )
+            # Store in STM and SQLite even for no-result answers
+            add_message(session_id, HumanMessage(content=question))
+            add_message(session_id, AIMessage(content=answer))
             save_message(session_id, "user", question)
             save_message(session_id, "assistant", answer)
             return answer
@@ -89,7 +103,11 @@ def generate_answer(question: str, session_id: str) -> str:
         # response is an AIMessage — extract text via .content
         answer = response.content
 
-        # 6. Persist both turns
+        # 6. Persist both turns:
+        #    → STM  (token-trimmed in-RAM, for LLM context window)
+        add_message(session_id, HumanMessage(content=question))
+        add_message(session_id, AIMessage(content=answer))
+        #    → SQLite (persistent, for Streamlit UI display)
         save_message(session_id, "user", question)
         save_message(session_id, "assistant", answer)
 

@@ -19,6 +19,7 @@ numpy>=1.24.0                    # Numerical ops required by FAISS & embeddings
 langchain>=0.3.0                 # Core LangChain framework
 langchain-core>=0.3.0            # LangChain base abstractions (LCEL, prompts, etc.)
 langchain-ollama>=0.2.0          # ChatOllama wrapper for local Ollama models
+tiktoken>=0.7.0                  # BPE token counter for STM trimming (provider-agnostic)
 
 # Phase 2 (Azure OpenAI) — install when ready:
 # langchain-openai>=0.2.0        # AzureChatOpenAI wrapper
