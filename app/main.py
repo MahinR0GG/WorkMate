@@ -4,6 +4,7 @@ RAG-based HR assistant for answering policy questions
 """
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.routes import chat
 from database.sqlite_db import init_db
 import uvicorn
@@ -12,6 +13,15 @@ app = FastAPI(
     title="HR Bot API",
     description="AI HR Assistant powered by RAG (Retrieval-Augmented Generation)",
     version="1.0.0"
+)
+
+# CORS — allow all origins so the React frontend (port 5173) and Streamlit can reach the API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Include routers

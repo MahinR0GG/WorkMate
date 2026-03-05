@@ -104,3 +104,12 @@ models/
 temp.py
 temp/
 *.tmp
+
+# ============================================
+# Node.js / React (frontend/react-app)
+# ============================================
+frontend/react-app/node_modules/
+frontend/react-app/dist/
+frontend/react-app/.vite/
+frontend/react-app/.env.local
+frontend/react-app/.env.*.local
