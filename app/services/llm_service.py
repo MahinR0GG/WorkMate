@@ -14,6 +14,7 @@ from app.services.llm_factory import get_llm
 from app.services.embedding_service import get_embedding
 from app.services.vector_service import search_similar_chunks
 from app.services.stm_service import add_message, get_trimmed_memory
+from app.services.guardrails_service import classify, get_canned_response
 from database.sqlite_db import save_message
 
 
@@ -51,6 +52,16 @@ def generate_answer(question: str, session_id: str) -> str:
     6. Store both turns in STM (in-RAM) and SQLite (persistent UI display)
     """
     try:
+        # 0. Guardrails — classify intent before touching FAISS or the LLM
+        intent = classify(question)
+        if intent != "hr_query":
+            answer = get_canned_response(intent)
+            add_message(session_id, HumanMessage(content=question))
+            add_message(session_id, AIMessage(content=answer))
+            save_message(session_id, "user", question)
+            save_message(session_id, "assistant", answer)
+            return answer
+
         # 1. Fetch token-trimmed STM history
         stm_messages = get_trimmed_memory(session_id)
 
