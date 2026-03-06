@@ -11,15 +11,22 @@ load_dotenv()
 
 # ============================================
 # LLM Provider — controls which LangChain model is used
-# Phase 1: "ollama"  |  Phase 2: "azure"
+# "litellm" (default) | "ollama"
 # ============================================
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "ollama")
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "litellm")
 
 # ============================================
-# LLM Configuration - Ollama
+# LLM Configuration - LiteLLM Proxy (primary)
+# ============================================
+LITELLM_BASE_URL  = os.getenv("LLM_BASE_URL",    "https://litellm-proxy-dev.blackocean-6e308bcc.centralindia.azurecontainerapps.io/")
+LITELLM_MODEL     = os.getenv("LLM_MODEL_NAME",  "azure/gpt-4o")
+LITELLM_API_KEY   = os.getenv("LLM_API_KEY",     "sk-litellm-proxy-key")
+
+# ============================================
+# LLM Configuration - Ollama (fallback)
 # ============================================
 OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-OLLAMA_MODEL    = os.getenv("OLLAMA_MODEL", "llama3")
+OLLAMA_MODEL    = os.getenv("OLLAMA_MODEL",    "llama3")
 
 # ── Phase 2: Azure OpenAI (uncomment when ready) ────────────────────────────
 # AZURE_OPENAI_ENDPOINT  = os.getenv("AZURE_OPENAI_ENDPOINT", "")

@@ -234,6 +234,65 @@ body {
   border: 1px solid var(--border);
 }
 
+/* Formatted bot bubble — react-markdown output */
+.bot-bubble p {
+  margin: 0 0 8px 0;
+  line-height: 1.6;
+}
+.bot-bubble p:last-child { margin-bottom: 0; }
+
+.bot-bubble ul,
+.bot-bubble ol {
+  margin: 4px 0 8px 0;
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.bot-bubble ol { counter-reset: item; }
+
+.bot-bubble ul li,
+.bot-bubble ol li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  line-height: 1.55;
+}
+
+/* Purple dot for unordered lists */
+.bot-bubble ul li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 2px;
+}
+
+/* Numbered counter for ordered lists */
+.bot-bubble ol li::before {
+  counter-increment: item;
+  content: counter(item) ".";
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 16px;
+}
+
+.bot-bubble strong { font-weight: 600; }
+.bot-bubble em     { font-style: italic; }
+
+.bot-bubble code {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-size: 0.82rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+}
 /* ── Typing indicator ── */
 @keyframes bounce {
   0%,

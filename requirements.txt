@@ -21,8 +21,7 @@ langchain-core>=0.3.0            # LangChain base abstractions (LCEL, prompts, e
 langchain-ollama>=0.2.0          # ChatOllama wrapper for local Ollama models
 tiktoken>=0.7.0                  # BPE token counter for STM trimming (provider-agnostic)
 
-# Phase 2 (Azure OpenAI) — install when ready:
-# langchain-openai>=0.2.0        # AzureChatOpenAI wrapper
+langchain-openai>=0.2.0         # ChatOpenAI wrapper for LiteLLM proxy (azure/gpt-4o)
 
 # ============================================
 # API & Web Server
